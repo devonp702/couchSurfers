@@ -28,10 +28,10 @@ Landing page:
 ![Landing page:](public/assets/img/*.png)
 
 Favorites page:
-![Notes page, showing previous notes on the left](public/assets/img/*.png)
+![Favorites page](public/assets/img/*.png)
 
 User input:
-![Notes page with a previously-entered note selected](public/assets/img/*.png)
+![User input form](public/assets/img/*.png)
 
 ## Installation Instructions
 
