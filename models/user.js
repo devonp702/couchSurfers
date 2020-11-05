@@ -10,6 +10,7 @@ module.exports = function (sequelize, DataTypes) {
                 //validation that checks our user is between 1 and 140 characters
             }
         },
+        
 
     })
 }
