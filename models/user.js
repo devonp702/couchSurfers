@@ -1,16 +1,18 @@
 //id, name, url/ foreign key
 
-module.exports = function (sequelize, DataTypes) {
+//User table
+module.exports = function (sequelize, Sequelize) {
     var User = sequelize.define("User", {
-        name: {
-            type: DataTypes.TEXT,
-            allowNull: false,
-            validate: {
-                len: [1, 140]
-                //validation that checks our user is between 1 and 140 characters
-            }
-        },
-        
+        name: {type: Sequelize.STRING, allowNull: false},
+        foreignKey: {type: Sequelize.STRING}   
+    
+    });
 
-    })
+    User.associate = function (models) {
+        //associating User with Favorites
+        User.hasMany(models.Favorites, {
+            onDelete: "cascade"
+        });
+    };
+    return User;
 }
