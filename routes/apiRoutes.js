@@ -1,4 +1,6 @@
-//api calls
+//database info routes 
+
+//get, post, deletes
 
 var db = require("../models");
 
