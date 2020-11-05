@@ -6,7 +6,11 @@ module.exports = {
     'database': process.env.travel_db,
     'host': process.env.DB_HOST,
     'port': process.env.localhost,
-    }
-}
+    'dialect': 'mysql'
+  },
+  'production': {
+    'use_env_variable': 'JAWSDB_URL',
+    'dialect': 'mysql'
+  }
+};
 
-    
