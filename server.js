@@ -2,7 +2,7 @@
 
 let express = require("express");
 let exphbs = require("express-handlebars");  
-const db = require("./models/index.js");
+const db = require("./models");
 let app = express();
 
 
@@ -23,6 +23,8 @@ app.use(express.static("public"));
 let routes = require("./controllers/travelControllers.js")
 app.use(routes);
 
+
+require("./routes/api-routes.js")
 
 
 db.sequelize.sync({ force: true }).then(function() {
