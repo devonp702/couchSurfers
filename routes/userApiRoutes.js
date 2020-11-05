@@ -1,8 +1,3 @@
-
-/// API - 
-
-// database info routes 
-
 // get, post, deletes
 
 // db.Users refers to Users table
@@ -11,7 +6,7 @@
 var db = require("../models");
 
 module.exports = function(app) {
-    // Find single user by id and include all of their favorites?
+    // Find single user by id and include all of their favorites
   app.get("/api/:users/favorites", function(req, res) {
     db.Users.findOne({
       where: {

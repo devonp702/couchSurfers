@@ -6,22 +6,8 @@
 var db = require("../models");
 
 module.exports = function (app) {
-  // GET route for getting all of the favorites for a given user?
-  app.get("/api/:users/favorites", function (req, res) {
-    var query = {};
-    if (req.query.user_id) {
-      query.UserId = req.query.user_id;
-    }
-    db.Favorites.findAll({
-      where: query,
-      include: [db.Users]
-    }).then(function (dbFavorites) {
-      res.json(dbFavorites);
-    });
-  });
-
   // GET route for retrieving a single favorite
-  app.get("/api/favorites/:id", function (req, res) {
+  app.get("/api/:users/favorites/:id", function (req, res) {
     db.Favorites.findOne({
       where: {
         id: req.params.id
