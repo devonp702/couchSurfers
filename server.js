@@ -19,10 +19,9 @@ app.set("view engine", "handlebars");
 
 app.use(express.static("public"));
 
-
-let routes = require("./controllers/travelControllers.js")
-app.use(routes);
-
+// Routes
+require("./routes/api-routes.js")(app);
+require("./routes/html-routes.js")(app);
 
 
 db.sequelize.sync({ force: true }).then(function() {
