@@ -5,7 +5,7 @@ module.exports = {
     'password': process.env.DB_PASS,
     'database': process.env.travel_db,
     'host': process.env.DB_HOST,
-    'port': process.env.localhost,
+    'port': process.env.DB_PORT,
     'dialect': 'mysql'
   },
   'production': {
