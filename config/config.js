@@ -6,5 +6,7 @@ module.exports = {
     'database': process.env.travel_db,
     'host': process.env.DB_HOST,
     'port': process.env.localhost,
+    }
+}
 
-    //change
+    
