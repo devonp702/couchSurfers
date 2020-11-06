@@ -6,7 +6,7 @@ $(document).ready(function() {
     $(document).on("click", "button.delete", handlePostDelete);
     $(document).on("click", "button.edit", handlePostEdit);
     postCategorySelect.on("change", handleCategoryChange);
-    var posts;
+    var entries;
   
     // This function grabs posts from the database and updates the view
     function getEntries(category) {
@@ -14,10 +14,10 @@ $(document).ready(function() {
       if (categoryString) {
         categoryString = "/category/" + categoryString;
       }
-      $.get("/api/posts" + categoryString, function(data) {
-        console.log("Posts", data);
-        posts = data;
-        if (!posts || !posts.length) {
+      $.get("/api/entries" + categoryString, function(data) {
+        console.log("Entries", data);
+        entries = data;
+        if (!entries || !entries.length) {
           displayEmpty();
         }
         else {
@@ -30,7 +30,7 @@ $(document).ready(function() {
     function deletePost(id) {
       $.ajax({
         method: "DELETE",
-        url: "/api/posts/" + id
+        url: "/api/entries/" + id
       })
         .then(function() {
           getPosts(postCategorySelect.val());
@@ -44,8 +44,8 @@ $(document).ready(function() {
     function initializeRows() {
       blogContainer.empty();
       var postsToAdd = [];
-      for (var i = 0; i < posts.length; i++) {
-        postsToAdd.push(createNewRow(posts[i]));
+      for (var i = 0; i < entries.length; i++) {
+        postsToAdd.push(createNewRow(entries[i]));
       }
       blogContainer.append(postsToAdd);
     }
@@ -65,7 +65,7 @@ $(document).ready(function() {
       var newPostTitle = $("<h2>");
       var newPostDate = $("<small>");
       var newPostCategory = $("<h5>");
-      newPostCategory.text(post.category);
+      newPostCategory.text(entry.category);
       newPostCategory.css({
         float: "right",
         "font-weight": "700",
@@ -75,8 +75,8 @@ $(document).ready(function() {
       var newPostCardBody = $("<div>");
       newPostCardBody.addClass("card-body");
       var newPostBody = $("<p>");
-      newPostTitle.text(post.title + " ");
-      newPostBody.text(post.body);
+      newPostTitle.text(entry.title + " ");
+      newPostBody.text(entry.body);
       var formattedDate = new Date(post.createdAt);
       formattedDate = moment(formattedDate).format("MMMM Do YYYY, h:mm:ss a");
       newPostDate.text(formattedDate);
@@ -88,7 +88,7 @@ $(document).ready(function() {
       newPostCardBody.append(newPostBody);
       newPostCard.append(newPostCardHeading);
       newPostCard.append(newPostCardBody);
-      newPostCard.data("post", post);
+      newPostCard.data("Entry", entry);
       return newPostCard;
     }
   
@@ -98,7 +98,7 @@ $(document).ready(function() {
       var currentPost = $(this)
         .parent()
         .parent()
-        .data("post");
+        .data("Entry");
       deletePost(currentPost.id);
     }
   
@@ -108,7 +108,7 @@ $(document).ready(function() {
       var currentPost = $(this)
         .parent()
         .parent()
-        .data("post");
+        .data("Entry");
       window.location.href = "/entry?post_id=" + currentPost.id;
     }
   
