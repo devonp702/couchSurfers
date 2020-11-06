@@ -20,5 +20,6 @@ module.exports = function(sequelize, DataTypes) {
         }
        
     });
+    console.log(Entry);
     return Entry;
 };
