@@ -16,7 +16,7 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/travel.html"));
   });
 // members route loads members.html
-app.get("/members", function(req, res) {
+app.get("/members", isAuthenticated, function(req, res) {
     res.sendFile(path.join(__dirname, "../public/members.html"));
   });
   // signup route loads signup.html
