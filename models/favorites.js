@@ -1,6 +1,6 @@
 
 
-//Favorites table
+Favorites table
 module.exports = function (sequelize, Sequelize) {
     var Favorites = sequelize.define("Favorites", {
         location: {type: Sequelize.STRING, allowNull: false},

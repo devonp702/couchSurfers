@@ -6,7 +6,8 @@ const db = require("./models");
 let app = express();
 
 
-let PORT = process.env.PORT || 8080;
+let PORT = process.env.PORT |
+// | 8080;
 
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
@@ -20,9 +21,10 @@ app.set("view engine", "handlebars");
 app.use(express.static("public"));
 
 // Routes
-require("./routes/favoritesApiRoutes")(app);
+require("./routes/entriesApiRoutes")(app);
 require("./routes/htmlRoutes.js")(app);
 require("./routes/userApiRoutes")(app);
+require("./routes/passportApiRoutes")(app);
 
 db.sequelize.sync({ force: true }).then(function() {
     app.listen(PORT, function() {
