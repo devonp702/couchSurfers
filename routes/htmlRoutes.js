@@ -9,7 +9,15 @@ module.exports = function(app) {
 
   // index route loads view.html
   app.get("/", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/favorites.html"));
+    res.sendFile(path.join(__dirname, "../public/login.html"));
+  });
+  // blog route loads blog.html
+  app.get("/blog", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/blog.html"));
+  });
+// entry route loads entry.html
+app.get("/entry", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/entry.html"));
   });
 // travel route loads travel.html
   app.get("/travel", function(req, res) {
@@ -23,9 +31,9 @@ app.get("/members", isAuthenticated, function(req, res) {
   app.get("/signup", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/signup.html"));
   });
-  // favorites route loads favorites.html
-  app.get("/favorites", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/favorites.html"));
+  // login route loads login.html
+  app.get("/login", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/login.html"));
   });
 
 };
