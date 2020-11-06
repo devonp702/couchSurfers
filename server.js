@@ -20,11 +20,9 @@ app.set("view engine", "handlebars");
 app.use(express.static("public"));
 
 // Routes
-require("./routes/api-routes.js")(app);
-require("./routes/html-routes.js")(app);
-
-require("./routes/api-routes.js")
-
+require("./routes/favoritesApiRoutes")(app);
+require("./routes/htmlRoutes.js")(app);
+require("./routes/userApiRoutes")(app);
 
 db.sequelize.sync({ force: true }).then(function() {
     app.listen(PORT, function() {
