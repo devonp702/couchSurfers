@@ -1,0 +1,17 @@
+button.submit {
+    float: right;
+  }
+  
+  form#entry {
+    margin-top: 50px;
+  }
+  
+  #entry textarea {
+    resize: none;
+  }
+  
+  .card-header button.delete,
+  button.edit {
+    float: right;
+    margin: 5px;
+  }
