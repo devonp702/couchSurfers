@@ -1,13 +1,21 @@
 
-//id, name, url/ foreign key
-
-
 //User table
-
+//Asking User for email and password
 module.exports = function (sequelize, Sequelize) {
     var User = sequelize.define("User", {
-        name: {type: Sequelize.STRING, allowNull: false},
-        foreignKey: {type: Sequelize.STRING}   
+       email: {
+           type:Sequelize.STRING,
+           allowNull: false,
+           unique: true,
+           validate: {
+               isEmail: true
+           }
+       },
+
+        password: {
+            type: Sequelize.STRING,
+            allowNull: false
+        }
     
     });
 
