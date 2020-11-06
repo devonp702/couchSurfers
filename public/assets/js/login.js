@@ -1,10 +1,14 @@
 $(document).ready(function() {
   // Getting references to our form and inputs
   var loginForm = $("form.login");
+<<<<<<< HEAD
   var emailInput = $("input#username-input");
+=======
+  var usernameInput = $("input#username-input");
+>>>>>>> 6f152a059c9771d7e0a616e3b1e36cb0682a6725
   var passwordInput = $("input#password-input");
 
-  // When the form is submitted, we validate there's an email and password entered
+  // When the form is submitted, we validate there's a username and password entered
   loginForm.on("submit", function(event) {
     event.preventDefault();
     var userData = {
