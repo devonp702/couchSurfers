@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 
 // Dependencies
 var path = require("path");
@@ -23,6 +22,3 @@ module.exports = function(app) {
   });
 
 };
-=======
-//where renders happen
->>>>>>> main
