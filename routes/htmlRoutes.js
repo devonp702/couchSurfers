@@ -1,8 +1,7 @@
-<<<<<<< HEAD
 
 // Dependencies
 var path = require("path");
-
+var isAuthenticated = require("../config/middleware/isAuthenticated");
 // Routes
 module.exports = function(app) {
 
@@ -16,13 +15,17 @@ module.exports = function(app) {
   app.get("/travel", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/travel.html"));
   });
-
+// members route loads members.html
+app.get("/members", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/members.html"));
+  });
+  // signup route loads signup.html
+  app.get("/signup", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/signup.html"));
+  });
   // favorites route loads favorites.html
   app.get("/favorites", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/favorites.html"));
   });
 
 };
-=======
-//where renders happen
->>>>>>> main
