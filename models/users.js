@@ -1,9 +1,9 @@
 
 //User table
-//Asking User for email and password
+//Asking User for username and password
 module.exports = function (sequelize, Sequelize) {
     var User = sequelize.define("User", {
-       email: {
+       username: {
            type:Sequelize.STRING,
            allowNull: false,
            unique: true,
