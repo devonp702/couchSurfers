@@ -11,12 +11,14 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.TEXT,
             allowNull: false,
             validate: {
-                len: [1]
+                len: [1, 500]
             }
         },
         category: {
             type: DataTypes.STRING,
             defaultValue: "Cities"
         }
+       
     });
+    return Entry;
 };
