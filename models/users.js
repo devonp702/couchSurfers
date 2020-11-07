@@ -6,10 +6,7 @@ module.exports = function (sequelize, Sequelize) {
        username: {
            type:Sequelize.STRING,
            allowNull: false,
-           unique: true,
-           validate: {
-               isUsername: true
-           }
+           unique: true
        },
 
         password: {
