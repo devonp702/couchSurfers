@@ -7,7 +7,7 @@ $(document).ready(function() {
   
     // If we have this section in our url, we pull out the post id from the url
     // In localhost:8080/cms?post_id=1, postId is 1
-    if (url.indexOf("?post_id=") !== -1) {
+    if (url.indexOf("?entry_id=") !== -1) {
       postId = url.split("=")[1];
       getPostData(postId);
     }
@@ -16,9 +16,7 @@ $(document).ready(function() {
     var bodyInput = $("#body");
     var titleInput = $("#title");
     var entryForm = $("#entry");
-    var postCategorySelect = $("#category");
-    // Giving the postCategorySelect a default value
-    postCategorySelect.val("Personal");
+    var entryCategorySelect = $("#category");
     // Adding an event listener for when the form is submitted
     $(entryForm).on("submit", function handleFormSubmit(event) {
       event.preventDefault();
@@ -30,7 +28,7 @@ $(document).ready(function() {
       var newPost = {
         title: titleInput.val().trim(),
         body: bodyInput.val().trim(),
-        category: postCategorySelect.val()
+        category: entryCategorySelect.val()
       };
   
       console.log(newPost);
@@ -48,14 +46,14 @@ $(document).ready(function() {
   
     // Submits a new post and brings user to blog page upon completion
     function submitPost(Post) {
-      $.post("/api/posts/", Post, function() {
+      $.post("/api/entries/", Post, function() {
         window.location.href = "/blog";
       });
     }
   
     // Gets post data for a post if we're editing
     function getPostData(id) {
-      $.get("/api/posts/" + id, function(data) {
+      $.get("/api/entries/" + id, function(data) {
         if (data) {
           // If this post exists, prefill our cms forms with its data
           titleInput.val(data.title);
@@ -72,7 +70,7 @@ $(document).ready(function() {
     function updatePost(post) {
       $.ajax({
         method: "PUT",
-        url: "/api/posts",
+        url: "/api/entries",
         data: post
       })
         .then(function() {
