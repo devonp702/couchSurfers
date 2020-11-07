@@ -8,7 +8,7 @@ var db = require("../models");
 module.exports = function (app) {
   // Find single user by id and include all of their favorites
   app.get("/api/:users/favorites", function (req, res) {
-    db.Users.findOne({
+    db.User.findOne({
       where: {
         id: req.params.id
       },
@@ -20,19 +20,19 @@ module.exports = function (app) {
 
   // Create user -- connect to user sign-up
   app.post("/api/:users", function (req, res) {
-    db.Users.create(req.body).then(function (dbUsers) {
+    db.User.create(req.body).then(function (dbUser) {
       res.json(dbUsers);
     });
   });
 
   // Delete user -- Favorites needs to associate in Favorites model
   app.delete("/api/:users", function (req, res) {
-    db.Users.destroy({
+    db.User.destroy({
       where: {
         id: req.params.id
       }
-    }).then(function (dbUsers) {
-      res.json(dbUsers);
+    }).then(function (dbUser) {
+      res.json(dbUser);
     });
   });
 

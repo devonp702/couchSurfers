@@ -1,16 +1,16 @@
 $(document).ready(function() {
     // blogContainer holds all of our posts
-    var blogContainer = $(".blog-container");
-    var postCategorySelect = $("#category");
+    const blogContainer = $(".blog-container");
+    const entryCategorySelect = $("#category");
     // Click events for the edit and delete buttons
-    $(document).on("click", "button.delete", handlePostDelete);
-    $(document).on("click", "button.edit", handlePostEdit);
-    postCategorySelect.on("change", handleCategoryChange);
-    var entries;
+    $(document).on("click", "button.delete", handleEntryDelete);
+    $(document).on("click", "button.edit", handleEntryEdit);
+    entryCategorySelect.on("change", handleCategoryChange);
+    let entries;
   
     // This function grabs posts from the database and updates the view
     function getEntries(category) {
-      var categoryString = category || "";
+      let categoryString = category || "";
       if (categoryString) {
         categoryString = "/category/" + categoryString;
       }
@@ -27,13 +27,13 @@ $(document).ready(function() {
     }
   
     // This function does an API call to delete posts
-    function deletePost(id) {
+    function deleteEntry(id) {
       $.ajax({
         method: "DELETE",
         url: "/api/entries/" + id
       })
         .then(function() {
-          getPosts(postCategorySelect.val());
+          getEntries(entryCategorySelect.val());
         });
     }
   
@@ -43,11 +43,11 @@ $(document).ready(function() {
     // blogContainer
     function initializeRows() {
       blogContainer.empty();
-      var postsToAdd = [];
+      let entriesToAdd = [];
       for (var i = 0; i < entries.length; i++) {
-        postsToAdd.push(createNewRow(entries[i]));
+        entriesToAdd.push(createNewRow(entries[i]));
       }
-      blogContainer.append(postsToAdd);
+      blogContainer.append(entriesToAdd);
     }
   
     // This function constructs a post's HTML
@@ -78,7 +78,7 @@ $(document).ready(function() {
       newPostTitle.text(entry.title + " ");
       newPostBody.text(entry.body);
       var formattedDate = new Date(entry.createdAt);
-      formattedDate = moment(formattedDate).format("MMMM Do YYYY, h:mm:ss a");
+      formattedDate = moment(formattedDate).format("MMMM Do, YYYY");
       newPostDate.text(formattedDate);
       newPostTitle.append(newPostDate);
       newPostCardHeading.append(deleteBtn);
@@ -92,39 +92,36 @@ $(document).ready(function() {
       return newPostCard;
     }
   
-    // This function figures out which post we want to delete and then calls
-    // deletePost
-    function handlePostDelete() {
-      var currentPost = $(this)
+    // This function figures out which post we want to delete and then calls deleteEntry function
+    function handleEntryDelete() {
+      let currentEntry = $(this)
         .parent()
         .parent()
         .data("Entry");
-      deletePost(currentPost.id);
+      deleteEntry(currentEntry.id);
     }
   
-    // This function figures out which post we want to edit and takes it to the
-    // Appropriate url
-    function handlePostEdit() {
-      var currentPost = $(this)
+    // This function figures out which post we want to edit
+    function handleEntryEdit() {
+      let currentEntry = $(this)
         .parent()
         .parent()
         .data("Entry");
-      window.location.href = "/entry?post_id=" + currentPost.id;
+      window.location.href = "/entry?post_id=" + currentEntry.id;
     }
   
     // This function displays a message when there are no posts
     function displayEmpty() {
       blogContainer.empty();
-      var messageH2 = $("<h2>");
+      const messageH2 = $("<h2>");
       messageH2.css({ "text-align": "center", "margin-top": "50px" });
-      messageH2.html("No posts yet for this category, navigate <a href='/entry'>here</a> in order to create a new post.");
+      messageH2.html("No blog entries, click <a href='/entry'>here</a> to write the first one.");
       blogContainer.append(messageH2);
     }
   
-    // This function handles reloading new posts when the category changes
+    // This function reloads new posts when the category changes
     function handleCategoryChange() {
-      var newPostCategory = $(this).val();
-      getEntries(newPostCategory);
+      let newEntryCategory = $(this).val();
+      getEntries(newEntryCategory);
     }
-  
   });

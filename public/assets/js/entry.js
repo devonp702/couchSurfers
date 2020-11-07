@@ -17,8 +17,6 @@ $(document).ready(function() {
     var titleInput = $("#title");
     var entryForm = $("#entry");
     var entryCategorySelect = $("#category");
-    // Giving the postCategorySelect a default value
-    entryCategorySelect.val("Personal");
     // Adding an event listener for when the form is submitted
     $(entryForm).on("submit", function handleFormSubmit(event) {
       event.preventDefault();
