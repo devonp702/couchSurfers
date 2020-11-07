@@ -32,12 +32,12 @@ module.exports = function (app) {
 
   // Delete user -- Entries needs to associate in entries model
   app.delete("/api/:users", function (req, res) {
-    db.Users.destroy({
+    db.User.destroy({
       where: {
         id: req.params.id
       }
-    }).then(function (dbUsers) {
-      res.json(dbUsers);
+    }).then(function (dbUser) {
+      res.json(dbUser);
     });
   });
 
