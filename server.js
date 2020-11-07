@@ -20,7 +20,8 @@ app.set("view engine", "handlebars");
 app.use(express.static("public"));
 
 // Routes
-require("./routes/entriesApiRoutes")(app);
+// require("./routes/entriesApiRoutes")(app);
+require("./routes/entriesApiRoutes.js")(app);
 require("./routes/htmlRoutes.js")(app);
 require("./routes/userApiRoutes")(app);
 require("./routes/passportApiRoutes")(app);
