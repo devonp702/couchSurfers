@@ -24,9 +24,9 @@ module.exports = function (sequelize, DataTypes) {
     // associating entry with user
     Entry.associate = function (models) {
         Entry.belongsTo(models.User, {
-            // foreignKey: {
-            //     allowNull: false
-            // }
+            foreignKey: {
+                allowNull: true
+            }
         });
     };
     return Entry;

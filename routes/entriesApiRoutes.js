@@ -18,7 +18,8 @@ module.exports = function(app) {
     db.Entry.findAll({
       where: {
         category: req.params.category
-      }
+      },
+      include: [db.User]
     })
       .then(function(dbEntry) {
         res.json(dbEntry);
@@ -30,7 +31,8 @@ module.exports = function(app) {
     db.Entry.findOne({
       where: {
         id: req.params.id
-      }
+      },
+      include: [db.User]
     })
       .then(function(dbEntry) {
         res.json(dbEntry);
@@ -40,11 +42,7 @@ module.exports = function(app) {
   // POST route for saving a new entry
   app.post("/api/entries", function(req, res) {
     console.log(req.body);
-    db.Entry.create({
-      title: req.body.title,
-      body: req.body.body,
-      category: req.body.category
-    })
+    db.Entry.create(req.body)
       .then(function(dbEntry) {
         res.json(dbEntry);
       });
