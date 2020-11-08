@@ -7,7 +7,6 @@ module.exports = function (sequelize, Sequelize) {
            type:Sequelize.STRING,
            allowNull: false,
            unique: true,
-          
        },
 
         password: {
