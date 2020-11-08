@@ -33,7 +33,7 @@ app.get("/members", isAuthenticated, function(req, res) {
   });
   // login route loads login.html
   app.get("/login", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/login.html"));
+    res.render(path.join(__dirname, "../views/login"));
   });
 
 };
