@@ -26,7 +26,7 @@ module.exports = function(app) {
   });
 
   // Get route for retrieving a single post
-  app.get("/api/entries/:id", function(req, res) {
+  app.get("/api/entries/id/:id", function(req, res) {
     db.Entry.findOne({
       where: {
         id: req.params.id
