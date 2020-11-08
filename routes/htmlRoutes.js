@@ -35,5 +35,10 @@ app.get("/members", isAuthenticated, function(req, res) {
   app.get("/login", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/login.html"));
   });
+ // resources route loads resources.html
+ app.get("/resources", function(req, res) {
+  res.sendFile(path.join(__dirname, "../public/resources.html"));
+});
+
 
 };
