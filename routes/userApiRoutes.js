@@ -20,7 +20,7 @@ module.exports = function (app) {
 
   // Create user -- connect to user sign-up
   app.post("/:signup", function (req, res) {
-    db.Users.create({
+    db.User.create({
       username: req.body.username,
       password: req.body.password
     }).then(function () {
