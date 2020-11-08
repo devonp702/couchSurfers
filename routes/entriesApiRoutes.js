@@ -6,47 +6,45 @@ var db = require("../models");
 module.exports = function(app) {
 
   // GET route for getting all of the posts
-  app.get("/api/entries/", function(req, res) {
+  app.get("/api/entries", function(req, res) {
     db.Entry.findAll({})
       .then(function(dbEntry) {
         res.json(dbEntry);
       });
   });
 
-  // Get route for returning posts of a specific category
+  // Get route for returning entries of a specific category
   app.get("/api/entries/category/:category", function(req, res) {
     db.Entry.findAll({
       where: {
         category: req.params.category
-      }
+      },
+      include: [db.User]
     })
-      .then(function(dbPost) {
-        res.json(dbPost);
+      .then(function(dbEntry) {
+        res.json(dbEntry);
       });
   });
 
-  // Get route for retrieving a single post
-  app.get("/api/entries/id/:id", function(req, res) {
+  // Get route for retrieving a single entry
+  app.get("/api/view/:id", function(req, res) {
     db.Entry.findOne({
       where: {
         id: req.params.id
-      }
+      },
+      include: [db.User]
     })
-      .then(function(dbPost) {
-        res.json(dbPost);
+      .then(function(dbEntry) {
+        res.json(dbEntry);
       });
   });
 
-  // POST route for saving a new post
+  // POST route for saving a new entry
   app.post("/api/entries", function(req, res) {
     console.log(req.body);
-    db.Entry.create({
-      title: req.body.title,
-      body: req.body.body,
-      category: req.body.category
-    })
-      .then(function(dbPost) {
-        res.json(dbPost);
+    db.Entry.create(req.body)
+      .then(function(dbEntry) {
+        res.json(dbEntry);
       });
   });
 
