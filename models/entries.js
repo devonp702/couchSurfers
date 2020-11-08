@@ -1,4 +1,4 @@
-module.exports = function(sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
     let Entry = sequelize.define("Entry", {
         title: {
             type: DataTypes.STRING,
@@ -18,17 +18,16 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING,
             defaultValue: "Cities"
         }
- 
-       
+
     });
 
+    // associating entry with user
     Entry.associate = function (models) {
         Entry.belongsTo(models.User, {
             foreignKey: {
-                allowNull: false
+                allowNull: true
             }
         });
     };
-    console.log(Entry);
     return Entry;
 };
