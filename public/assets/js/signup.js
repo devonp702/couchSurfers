@@ -23,13 +23,13 @@ $(document).ready(function() {
 
   // POST to the signup route. If successful, redirect to the members page; otherwise, log any errors
   function signUpUser(username, password) {
-    $.post("/signup", {
+    $.post("/api/signup", {
       username: username,
       password: password
     })
       .then(function(data) {
-        window.location.replace("../../login.html");
-        // If there's an error, handle it by throwing up a bootstrap alert\
+        window.location.replace("/login.html");
+        // If there's an error, handle it by throwing up a bootstrap alert
       })
       .catch(handleLoginErr);
   }

@@ -4,6 +4,7 @@ let express = require("express");
 let exphbs = require("express-handlebars");  
 const db = require("./models");
 let app = express();
+var passport = require("./config/passport");
 
 
 let PORT = process.env.PORT || 8080;
@@ -18,6 +19,10 @@ app.set("view engine", "handlebars");
 
 
 app.use(express.static("public"));
+
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Routes
 // require("./routes/entriesApiRoutes")(app);
