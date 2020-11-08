@@ -34,7 +34,7 @@ $(document).ready(function() {
       if (idString) {
         idString = "/id/" + idString;
       }
-      $.get("/api/entries/" + idString, function(data) {
+      $.get("/api/view/:id" + idString, function(data) {
         console.log("Entry", data);
         entries = data;
         if (!entries || !entries.length) {
@@ -50,7 +50,7 @@ $(document).ready(function() {
     function viewEntry(id) {
       $.ajax({
         method: "GET",
-        url: "/api/entries/" + id
+        url: "/api/view/" + id
       })
         .then(function() {
           getOneEntry(entryIdSelect.val());

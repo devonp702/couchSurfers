@@ -14,14 +14,12 @@ module.exports = function (sequelize, Sequelize) {
             allowNull: false
         },
     });
-    console.log(User);
 
+    //associating User with Entry
     User.associate = function (models) {
-        //associating User with Entry
         User.hasMany(models.Entry, {
             onDelete: "cascade"
         });
     };
-    console.log(User);
     return User;
 }
