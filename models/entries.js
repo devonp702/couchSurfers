@@ -18,8 +18,17 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING,
             defaultValue: "Cities"
         }
+ 
        
     });
+
+    Entry.associate = function (models) {
+        Entry.belongsTo(models.User, {
+            foreignKey: {
+                allowNull: false
+            }
+        });
+    };
     console.log(Entry);
     return Entry;
 };
