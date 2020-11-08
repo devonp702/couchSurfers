@@ -107,7 +107,7 @@ $(document).ready(function() {
         .parent()
         .parent()
         .data("Entry");
-      window.location.href = "/entry?post_id=" + currentEntry.id;
+      window.location.href = "/entry?entry_id=" + currentEntry.id;
     }
   
     // This function displays a message when there are no posts
