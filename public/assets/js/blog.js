@@ -2,9 +2,11 @@ $(document).ready(function() {
     // blogContainer holds all of our posts
     const blogContainer = $(".blog-container");
     const entryCategorySelect = $("#category");
-    // Click events for the edit and delete buttons
+    const entryIdSelect = $(this.id);
+    // Click events for the edit, delete and view buttons
     $(document).on("click", "button.delete", handleEntryDelete);
     $(document).on("click", "button.edit", handleEntryEdit);
+    $(document).on("click", "button.view", handleViewEntry);
     entryCategorySelect.on("change", handleCategoryChange);
     let entries;
   
@@ -24,6 +26,35 @@ $(document).ready(function() {
           initializeRows();
         }
       });
+    }
+
+    // This function grabs posts from the database and updates the view to display one entry
+    function getOneEntry(id) {
+      let idString = id || "";
+      if (idString) {
+        idString = "/id/" + idString;
+      }
+      $.get("/api/entries/" + idString, function(data) {
+        console.log("Entry", data);
+        entries = data;
+        if (!entries || !entries.length) {
+          displayEmpty();
+        }
+        else {
+          initializeRows();
+        }
+      });
+    }
+
+    // This function does an API call to view single posts
+    function viewEntry(id) {
+      $.ajax({
+        method: "GET",
+        url: "/api/entries/" + id
+      })
+        .then(function() {
+          getOneEntry(entryIdSelect.val());
+        });
     }
   
     // This function does an API call to delete posts
@@ -62,6 +93,9 @@ $(document).ready(function() {
       var editBtn = $("<button>");
       editBtn.text("EDIT");
       editBtn.addClass("edit btn btn-default");
+      var viewBtn = $("<button>");
+      viewBtn.text("VIEW");
+      viewBtn.addClass("view btn btn-default");
       var newPostTitle = $("<h2>");
       var newPostDate = $("<small>");
       var newPostCategory = $("<h5>");
@@ -83,6 +117,7 @@ $(document).ready(function() {
       newPostTitle.append(newPostDate);
       newPostCardHeading.append(deleteBtn);
       newPostCardHeading.append(editBtn);
+      newPostCardHeading.append(viewBtn);
       newPostCardHeading.append(newPostTitle);
       newPostCardHeading.append(newPostCategory);
       newPostCardBody.append(newPostBody);
@@ -108,6 +143,16 @@ $(document).ready(function() {
         .parent()
         .data("Entry");
       window.location.href = "/entry?entry_id=" + currentEntry.id;
+    }
+
+    // This function displays a single post
+    function handleViewEntry() {
+      let currentEntry = $(this)
+        .parent()
+        .parent()
+        .data("Entry")
+      viewEntry(currentEntry.id);
+      window.location.href = "/view?entry_id=" + currentEntry.id;
     }
   
     // This function displays a message when there are no posts
