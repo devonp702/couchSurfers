@@ -17,8 +17,8 @@ $(document).ready(function() {
     }
     // If both inputs have been entered, run the signUpUser function
     signUpUser(userData.username, userData.password);
-    usernameInput.val("");
-    passwordInput.val("");
+    username.val("");
+    password.val("");
   });
 
   // POST to the signup route. If successful, redirect to the members page; otherwise, log any errors
@@ -28,7 +28,7 @@ $(document).ready(function() {
       password: password
     })
       .then(function(data) {
-        window.location.replace("../../members.html");
+        window.location.replace("../../login.html");
         // If there's an error, handle it by throwing up a bootstrap alert
       })
       .catch(handleLoginErr);
