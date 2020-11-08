@@ -9,7 +9,7 @@ module.exports = function(app) {
 
   // index route loads login.html
   app.get("/", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/login.html"));
+    res.render(path.join(__dirname, "../views/login"));
   });
   // blog route loads blog.html
   app.get("/blog", function(req, res) {
@@ -17,8 +17,8 @@ module.exports = function(app) {
   });
 // entry route loads entry.html
 app.get("/entry", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/entry.html"));
-  });
+  res.render(path.join(__dirname, "../views/entry"));
+});
 // view route loads view.html
 app.get("/view", function(req, res) {
   res.sendFile(path.join(__dirname, "../public/view.html"));
@@ -33,7 +33,7 @@ app.get("/members", isAuthenticated, function(req, res) {
   });
   // signup route loads signup.html
   app.get("/signup", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/signup.html"));
+    res.render(path.join(__dirname, "../views/signup"));
   });
   // login route loads login.html
   app.get("/login", function(req, res) {
