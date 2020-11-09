@@ -25,10 +25,10 @@ This is a miniblog (entries of 500 characters or less) site using Node.js, Expre
 ## Screenshots
 
 Landing & login page:
-![Landing page:](public/assets/img/landing-page.png)
+![Landing page](public/assets/img/landing-page.png)
 
 Sign-up page:
-![Sign-up page:](public/assets/img/signup-page.png)
+![Sign-up page](public/assets/img/signup-page.png)
 
 Empty blog page:
 ![Empty blog page](public/assets/img/empty-blog-page.png)
@@ -40,7 +40,7 @@ Entry page:
 ![User input form](public/assets/img/entry-page.png)
 
 Resources page:
-![Resources page:](public/assets/img/resources-page.png)
+![Resources page](public/assets/img/resources-page.png)
 
 ## Installation Instructions
 
