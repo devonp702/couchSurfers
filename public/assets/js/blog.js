@@ -27,22 +27,26 @@ $(document).ready(function() {
         }
       });
     }
+    
+    // Getting the initial list of posts
+    getEntries();
 
     // This function grabs posts from the database and updates the view to display one entry
     function getOneEntry(id) {
-      let idString = id || "";
+      let idString = id
       if (idString) {
         idString = "/id/" + idString;
       }
+      console.log(idString);
       $.get("/api/view/:id" + idString, function(data) {
         console.log("Entry", data);
         entries = data;
-        if (!entries || !entries.length) {
-          displayEmpty();
-        }
-        else {
-          initializeRows();
-        }
+        // if (!entries || !entries.length) {
+        //   displayEmpty();
+        // }
+        // else {
+        //   initializeRows();
+        // }
       });
     }
 
@@ -53,6 +57,7 @@ $(document).ready(function() {
         url: "/api/view/" + id
       })
         .then(function() {
+          console.log(entryIdSelect);
           getOneEntry(entryIdSelect.val());
         });
     }
@@ -68,8 +73,6 @@ $(document).ready(function() {
         });
     }
   
-    // Getting the initial list of posts
-    getEntries();
     // InitializeRows handles appending all of our constructed post HTML inside
     // blogContainer
     function initializeRows() {
