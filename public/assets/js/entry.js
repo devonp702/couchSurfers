@@ -1,7 +1,10 @@
 $(document).ready(function() {
     // Gets an optional query string from our url (i.e. ?entry=23)
+
+    console.log( window.location.search.substring(1).split("=")[1] )
     let url = window.location.search;
     let entryId;
+    let userId;
     // Updating - t/f?
     var updating = false;
   
@@ -10,6 +13,8 @@ $(document).ready(function() {
     if (url.indexOf("?entry_id=") !== -1) {
       entryId = url.split("=")[1];
       getEntryData(entryId);
+      userId = url.split("=")[2];
+      getEntryData(userId);
     }
   
     // Getting jQuery references to the entry body, title, form, and category select
@@ -74,8 +79,8 @@ $(document).ready(function() {
         url: "/api/entries",
         data: entry
       })
-        .then(function() {
-          window.location.href = "/blog";
+        .then(function(authUser) {
+          window.location.href = "/blog?userid=" + authUser.id;
         });
     }
   });

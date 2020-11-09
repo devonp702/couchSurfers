@@ -1,8 +1,12 @@
 $(document).ready(function() {
+    //get the user id from the url string
+    console.log( window.location.search.substring(1).split("=")[1] )
+
+
     // blogContainer holds all of our blog entries
     const blogContainer = $(".blog-container");
     const entryCategorySelect = $("#category");
-    const entryIdSelect = $(this.id);
+    
     $(document).on("click", "button.delete", handleEntryDelete);
     $(document).on("click", "button.edit", handleEntryEdit);
     entryCategorySelect.on("change", handleCategoryChange);
