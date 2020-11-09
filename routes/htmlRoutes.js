@@ -17,7 +17,7 @@ module.exports = function (app) {
   });
   
   // blog route loads blog.html
-  app.get("/blog", isAuthenticated, function (req, res) {
+  app.get("/blog", function (req, res) {
     res.render(path.join(__dirname, "../views/blog"));
   });
  
