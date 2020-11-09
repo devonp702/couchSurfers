@@ -1,6 +1,7 @@
 $(document).ready(function () {
   //get the user id from the url string
   let userId = parseInt(window.location.search.substring(1).split("=")[1]);
+  console.log(userId)
 
   // blogContainer holds all of our blog entries
   const blogContainer = $(".blog-container");
@@ -62,9 +63,13 @@ $(document).ready(function () {
     newPostCardHeading.addClass("card-header");
     var deleteBtn = $("<button>");
     deleteBtn.text("x");
+    deleteBtn.attr("data-user", userId);
+    deleteBtn.attr("data-entry", entry.id);
     deleteBtn.addClass("delete btn btn-danger");
     var editBtn = $("<button>");
     editBtn.text("EDIT");
+    editBtn.attr("data-user", userId);
+    editBtn.attr("data-entry", entry.id);
     editBtn.addClass("edit btn btn-default");
     var newPostTitle = $("<h2>");
     var newPostDate = $("<small>");
@@ -97,7 +102,12 @@ $(document).ready(function () {
   }
 
   // This function figures out which post we want to delete and then calls deleteEntry function
+
+  //TO DO:  get the entry id (by putting as a data attribute on the delete button)
   function handleEntryDelete() {
+    const userId = $(this).attr("data-user")
+    const entryId = $(this).attr("data-entry")
+    
     let currentEntry = $(this)
       .parent()
       .parent()
@@ -107,11 +117,14 @@ $(document).ready(function () {
 
   // This function figures out which blog entry we want to edit
   function handleEntryEdit() {
+    const userId = $(this).attr("data-user")
+    const entryId = $(this).attr("data-entry")
+
     var currentEntry = $(this)
       .parent()
       .parent()
       .data("entry");
-    window.location.href = `/entry?userid=${userId}&entry_id=${currentEntry.id}`;
+    window.location.href = `/entry/${userId}/${entryId}`;
   }
 
   // This function displays a message when there are no posted entries
