@@ -28,8 +28,8 @@ $(document).ready(function() {
       username: username,
       password: password
     })
-      .then(function() {
-        window.location.replace("/blog");
+      .then(function(authUser) {
+        window.location.replace("/blog?userid=" + authUser.id);
         // If there's an error, log the error
       })
       .catch(function(err) {

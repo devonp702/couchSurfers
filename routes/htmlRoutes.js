@@ -1,8 +1,9 @@
 // Dependencies
 var path = require("path");
 var isAuthenticated = require("../config/middleware/isAuthenticated");
+
 // Routes
-module.exports = function (app) {
+module.exports = function (app, authUser) {
 
   // Each of the below routes just handles the HTML page that the user gets sent to.
 
@@ -25,10 +26,7 @@ module.exports = function (app) {
   app.get("/view", function (req, res) {
     res.sendFile(path.join(__dirname, "../public/view.html"));
   });
-  // travel route loads travel.html
-  app.get("/travel", function (req, res) {
-    res.sendFile(path.join(__dirname, "../public/travel.html"));
-  });
+  
   // members route loads members.html
   app.get("/members", isAuthenticated, function (req, res) {
     res.sendFile(path.join(__dirname, "../public/members.html"));
@@ -45,6 +43,5 @@ module.exports = function (app) {
   app.get("/resources", function (req, res) {
     res.render(path.join(__dirname, "../views/resources"));
   });
-
 
 };
