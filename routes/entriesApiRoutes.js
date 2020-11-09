@@ -2,10 +2,9 @@
 var db = require("../models");
 
 // Routes
-// =============================================================
 module.exports = function(app) {
 
-  // GET route for getting all of the posts
+  // GET route for getting all of the entries
   app.get("/api/entries", function(req, res) {
     db.Entry.findAll({})
       .then(function(dbEntry) {
@@ -26,13 +25,12 @@ module.exports = function(app) {
       });
   });
 
-  // Get route for retrieving a single entry
-  app.get("/api/view/:id", function(req, res) {
+  // GET route for editing a single entry
+  app.get("/api/entries/:id", function(req, res) {
     db.Entry.findOne({
       where: {
         id: req.params.id
-      },
-      include: [db.User]
+      }
     })
       .then(function(dbEntry) {
         res.json(dbEntry);
@@ -48,7 +46,7 @@ module.exports = function(app) {
       });
   });
 
-  // DELETE route for deleting posts
+  // DELETE route for deleting entries
   app.delete("/api/entries/:id", function(req, res) {
     db.Entry.destroy({
       where: {
@@ -60,7 +58,7 @@ module.exports = function(app) {
       });
   });
 
-  // PUT route for updating posts
+  // PUT route for updating entries
   app.put("/api/entries", function(req, res) {
     db.Entry.update(req.body,
       {
@@ -73,4 +71,3 @@ module.exports = function(app) {
       });
   });
 };
-

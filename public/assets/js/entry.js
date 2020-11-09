@@ -3,7 +3,7 @@ $(document).ready(function() {
     let url = window.location.search;
     let entryId;
     // Updating - t/f?
-    let updating = false;
+    var updating = false;
   
     // If this exists in our url, pull out the entry id from the url
     // In localhost:8080/?entry_id=1, entryId is 1
@@ -65,6 +65,7 @@ $(document).ready(function() {
         }
       });
     }
+    
   
     // Update a given entry, bring user to the blog page when done
     function updateEntry(entry) {

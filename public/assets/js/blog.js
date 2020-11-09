@@ -1,14 +1,12 @@
 $(document).ready(function() {
-    // blogContainer holds all of our posts
+    // blogContainer holds all of our blog entries
     const blogContainer = $(".blog-container");
     const entryCategorySelect = $("#category");
     const entryIdSelect = $(this.id);
-    // Click events for the edit, delete and view buttons
     $(document).on("click", "button.delete", handleEntryDelete);
     $(document).on("click", "button.edit", handleEntryEdit);
-    $(document).on("click", "button.view", handleViewEntry);
     entryCategorySelect.on("change", handleCategoryChange);
-    let entries;
+    var entries;
   
     // This function grabs posts from the database and updates the view
     function getEntries(category) {
@@ -27,42 +25,8 @@ $(document).ready(function() {
         }
       });
     }
-    
-    // Getting the initial list of posts
-    getEntries();
-
-    // This function grabs posts from the database and updates the view to display one entry
-    function getOneEntry(id) {
-      let idString = id
-      if (idString) {
-        idString = "/id/" + idString;
-      }
-      console.log(idString);
-      $.get("/api/view/:id" + idString, function(data) {
-        console.log("Entry", data);
-        entries = data;
-        // if (!entries || !entries.length) {
-        //   displayEmpty();
-        // }
-        // else {
-        //   initializeRows();
-        // }
-      });
-    }
-
-    // This function does an API call to view single posts
-    function viewEntry(id) {
-      $.ajax({
-        method: "GET",
-        url: "/api/view/" + id
-      })
-        .then(function() {
-          console.log(entryIdSelect);
-          getOneEntry(entryIdSelect.val());
-        });
-    }
   
-    // This function does an API call to delete posts
+    // This function does an API call to delete blog entries
     function deleteEntry(id) {
       $.ajax({
         method: "DELETE",
@@ -73,8 +37,10 @@ $(document).ready(function() {
         });
     }
   
-    // InitializeRows handles appending all of our constructed post HTML inside
-    // blogContainer
+    // Getting the initial list of posts
+    getEntries();
+
+    // InitializeRows handles appending all of our constructed post HTML inside of blogContainer
     function initializeRows() {
       blogContainer.empty();
       let entriesToAdd = [];
@@ -84,7 +50,7 @@ $(document).ready(function() {
       blogContainer.append(entriesToAdd);
     }
   
-    // This function constructs a post's HTML
+    // This function constructs a postcard's HTML
     function createNewRow(entry) {
       var newPostCard = $("<div>");
       newPostCard.addClass("card");
@@ -96,9 +62,6 @@ $(document).ready(function() {
       var editBtn = $("<button>");
       editBtn.text("EDIT");
       editBtn.addClass("edit btn btn-default");
-      var viewBtn = $("<button>");
-      viewBtn.text("VIEW");
-      viewBtn.addClass("view btn btn-default");
       var newPostTitle = $("<h2>");
       var newPostDate = $("<small>");
       var newPostCategory = $("<h5>");
@@ -120,13 +83,12 @@ $(document).ready(function() {
       newPostTitle.append(newPostDate);
       newPostCardHeading.append(deleteBtn);
       newPostCardHeading.append(editBtn);
-      newPostCardHeading.append(viewBtn);
       newPostCardHeading.append(newPostTitle);
       newPostCardHeading.append(newPostCategory);
       newPostCardBody.append(newPostBody);
       newPostCard.append(newPostCardHeading);
       newPostCard.append(newPostCardBody);
-      newPostCard.data("Entry", entry);
+      newPostCard.data("entry", entry);
       return newPostCard;
     }
   
@@ -135,30 +97,20 @@ $(document).ready(function() {
       let currentEntry = $(this)
         .parent()
         .parent()
-        .data("Entry");
+        .data("entry");
       deleteEntry(currentEntry.id);
     }
   
-    // This function figures out which post we want to edit
+    // This function figures out which blog entry we want to edit
     function handleEntryEdit() {
-      let currentEntry = $(this)
+      var currentEntry = $(this)
         .parent()
         .parent()
-        .data("Entry");
+        .data("entry");
       window.location.href = "/entry?entry_id=" + currentEntry.id;
     }
-
-    // This function displays a single post
-    function handleViewEntry() {
-      let currentEntry = $(this)
-        .parent()
-        .parent()
-        .data("Entry")
-      viewEntry(currentEntry.id);
-      window.location.href = "/view?entry_id=" + currentEntry.id;
-    }
   
-    // This function displays a message when there are no posts
+    // This function displays a message when there are no posted entries
     function displayEmpty() {
       blogContainer.empty();
       const messageH2 = $("<h2>");
@@ -167,7 +119,7 @@ $(document).ready(function() {
       blogContainer.append(messageH2);
     }
   
-    // This function reloads new posts when the category changes
+    // This function reloads new entries when the category changes
     function handleCategoryChange() {
       let newEntryCategory = $(this).val();
       getEntries(newEntryCategory);
