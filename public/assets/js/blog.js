@@ -1,8 +1,6 @@
 $(document).ready(function () {
   //get the user id from the url string
-  let userId = window.location.search.substring(1).split("=")[1]
-  console.log(userId);
-
+  let userId = parseInt(window.location.search.substring(1).split("=")[1]);
 
   // blogContainer holds all of our blog entries
   const blogContainer = $(".blog-container");
@@ -113,7 +111,7 @@ $(document).ready(function () {
       .parent()
       .parent()
       .data("entry");
-    window.location.href = "/entry?entry_id=" + currentEntry.id;
+    window.location.href = `/entry?userid=${userId}&entry_id=${currentEntry.id}`;
   }
 
   // This function displays a message when there are no posted entries
@@ -121,7 +119,7 @@ $(document).ready(function () {
     blogContainer.empty();
     const messageH2 = $("<h2>");
     messageH2.css({ "text-align": "center", "margin-top": "50px" });
-    messageH2.html("No blog entries, click <a href='/entry'>here</a> to write the first one.");
+    messageH2.html(`No blog entries, click <a href='/entry?userid=${userId}'>here</a> to write the first one.`);
     blogContainer.append(messageH2);
   }
 
