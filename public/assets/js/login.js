@@ -29,7 +29,7 @@ $(document).ready(function() {
       password: password
     })
       .then(function() {
-        window.location.replace("/blog.html");
+        window.location.replace("/blog");
         // If there's an error, log the error
       })
       .catch(function(err) {

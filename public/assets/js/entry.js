@@ -3,10 +3,10 @@ $(document).ready(function() {
     let url = window.location.search;
     let entryId;
     // Updating - t/f?
-    let updating = false;
+    var updating = false;
   
-    // If we have this section in our url, we pull out the entry id from the url
-    // In localhost:8080/cms?entry_id=1, entryId is 1
+    // If this exists in our url, pull out the entry id from the url
+    // In localhost:8080/?entry_id=1, entryId is 1
     if (url.indexOf("?entry_id=") !== -1) {
       entryId = url.split("=")[1];
       getEntryData(entryId);
@@ -65,6 +65,7 @@ $(document).ready(function() {
         }
       });
     }
+    
   
     // Update a given entry, bring user to the blog page when done
     function updateEntry(entry) {
