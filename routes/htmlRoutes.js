@@ -11,8 +11,8 @@ module.exports = function (app) {
     res.render(path.join(__dirname, "../views/login"));
   });
   // blog route loads blog.html
-  app.get("/blog", function (req, res) {
-    res.sendFile(path.join(__dirname, "../public/blog.html"));
+  app.get("/blog", isAuthenticated, function (req, res) {
+    res.render(path.join(__dirname, "../views/blog"));
   });
   // entry route loads entry.html
   app.get("/entry", function (req, res) {
