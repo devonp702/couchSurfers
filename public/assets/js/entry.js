@@ -1,10 +1,9 @@
 $(document).ready(function() {
     // Gets an optional query string from our url (i.e. ?entry=23)
 
-    console.log( window.location.search.substring(1).split("=")[1] )
+    let userId = window.location.search.substring(1).split("=")[1];
     let url = window.location.search;
     let entryId;
-    let userId;
     // Updating - t/f?
     var updating = false;
   
@@ -13,8 +12,6 @@ $(document).ready(function() {
     if (url.indexOf("?entry_id=") !== -1) {
       entryId = url.split("=")[1];
       getEntryData(entryId);
-      userId = url.split("=")[2];
-      getEntryData(userId);
     }
   
     // Getting jQuery references to the entry body, title, form, and category select
@@ -22,6 +19,10 @@ $(document).ready(function() {
     var titleInput = $("#title");
     var entryForm = $("#entry");
     var entryCategorySelect = $("#category");
+
+    // Adding event listener on "Go to Blog" button
+    $(document).on("click", "button.blogBtn", goToBlog);
+
     // Adding an event listener for when the form is submitted
     $(entryForm).on("submit", function handleFormSubmit(event) {
       event.preventDefault();
@@ -33,7 +34,8 @@ $(document).ready(function() {
       var newEntry = {
         title: titleInput.val().trim(),
         body: bodyInput.val().trim(),
-        category: entryCategorySelect.val()
+        category: entryCategorySelect.val(),
+        UserId: userId
       };
   
       console.log(newEntry);
@@ -52,7 +54,7 @@ $(document).ready(function() {
     // Submits a new entry and brings user to blog page upon completion
     function submitEntry(Entry) {
       $.post("/api/entries/", Entry, function() {
-        window.location.href = "/blog";
+        window.location.href = "/blog?userid=" + userId;
       });
     }
   
@@ -82,5 +84,9 @@ $(document).ready(function() {
         .then(function(authUser) {
           window.location.href = "/blog?userid=" + authUser.id;
         });
+    }
+
+    function goToBlog() {
+      window.location.href = "/blog?userid=" + userId;
     }
   });
