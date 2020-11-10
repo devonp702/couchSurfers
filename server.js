@@ -13,11 +13,6 @@ let PORT = process.env.PORT || 8080;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-<<<<<<< HEAD
-
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
-app.set("view engine", "handlebars");   //replace
-=======
 const handlebarsConfig = {
   defaultLayout: "main", 
   runtimeOptions: {
@@ -28,7 +23,6 @@ const handlebarsConfig = {
 
 app.engine("handlebars", exphbs(handlebarsConfig));
 app.set("view engine", "handlebars");
->>>>>>> main
 
 
 app.use(express.static("public"));
