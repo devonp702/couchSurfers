@@ -5,9 +5,6 @@ $(document).ready(function () {
   const userId = urlArray[urlArray.length - 1]
   console.log(userId)
 
-  // blog?userid=1
-  // /blog/1
-
   // blogContainer holds all of our blog entries
   const blogContainer = $(".blog-container");
   const entryCategorySelect = $("#category");
@@ -83,6 +80,7 @@ $(document).ready(function () {
     var newPostTitle = $("<h2>");
     var newPostDate = $("<small>");
     var newPostCategory = $("<h5>");
+    var newPostAuthor = $("<h5>");
     newPostCategory.text(entry.category);
     newPostCategory.css({
       float: "right",
@@ -99,23 +97,12 @@ $(document).ready(function () {
     formattedDate = moment(formattedDate).format("MMMM Do, YYYY");
     newPostDate.text(formattedDate);
     newPostTitle.append(newPostDate);
-    
     newPostCardHeading.append(newPostTitle);
     newPostCardHeading.append(newPostCategory);
     newPostCardBody.append(newPostBody);
     newPostCard.append(newPostCardHeading);
     newPostCard.append(newPostCardBody);
     newPostCard.data("entry", entry);
-
-    /*
-    console.log( entry.UserId + "|" + userId)
-    if (entry.UserId != userId) {
-      console.log("hide: " + entry.title)
-      $("button.edit").hide(),
-      $("button.delete").hide()
-    }
-    */
-
     return newPostCard;
   }
 
