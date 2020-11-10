@@ -33,6 +33,29 @@ background-color: #409D8B;
 
 }
 
+/* #CDDDDD LIGHT
+#9CC6C4M MED
+#409D8B AQUA
+#015E54 DARK
+#E08340 ORANGE */
+
+.navbar-template {
+  background-color: #015E54; 
+height: 7%;
+  /* linear-gradient(rgba(230, 183, 95, 0.5), rgba(14, 131, 151, 0.5)) */
+}
+
+.navbar-elements {
+  text-align: center; 
+  font-size: 35px;
+  color: white;
+}
+/* .d-inline-block {
+  /
+} */
+
+
+/* login/signup form */
 #center-form {  
   margin-top: 150px;
   align-content: center;
@@ -42,7 +65,7 @@ background-color: #409D8B;
 #form-text {
   color: white;
 }
-
+/* blog container */
 button.submit {
   float: right;
 }
@@ -63,3 +86,39 @@ button.edit {
 /* ---- reset ---- */  /* ---- particles.js container ---- */ #particles-js{ position:absolute; width: 100%; height: 100%; background-color: #131637; background-image: url(""); background-repeat: no-repeat; background-size: cover; background-position: 50% 50%; } /* ---- stats.js ---- */ 
 
 
+
+body, html {
+  height: 100%;
+}
+
+/* The hero image */
+.hero-image {
+/* Use "linear-gradient" to add a darken background effect to the image (wave.jpg). This will make the text easier to read */
+background-image: linear-gradient(rgba(230, 183, 95, 0.5), rgba(14, 131, 151, 0.5)), url("/assets/img/wave.jpg");
+
+/* Set a specific height */
+height: 25%;
+
+/* Position and center the image to scale nicely on all screens */
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+position: relative;
+}
+
+/* Place text in the middle of the image */
+.hero-text {
+text-align: center;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+color:white;
+}
+
+/* ---- particles.js container ---- */ 
+#particles-js{ position:absolute; width: 100%; height: 100%; background-color: #9CC6C4; background-image: url(""); background-repeat: no-repeat; background-size: cover; background-position: 50% 50%; } 
+
+#blog1 {
+  background-color: #409D8B
+}
