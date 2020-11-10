@@ -9,7 +9,7 @@ module.exports = function (app, authUser) {
 
 
   /*
-  1. Make a call to an html route handler, get the emtry and user id, query sequelize, send data to handlebars
+  1. Make a call to an html route handler, get the entry and user id, query sequelize, send data to handlebars
 
   2. On a static entry page, when that page loads, get the entry and user id, make an AJAX call to get the data, receive the data (JSON) and then update the DOM 
 
