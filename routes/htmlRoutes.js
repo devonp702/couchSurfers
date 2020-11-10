@@ -1,11 +1,12 @@
 // Dependencies
 var path = require("path");
+var db = require("../models");
 var isAuthenticated = require("../config/middleware/isAuthenticated");
 
 // Routes
 module.exports = function (app, authUser) {
 
-  // Each of the below routes just handles the HTML page that the user gets sent to.
+  // These routes just handles the page that the user gets sent to.
 
 
   /*
@@ -16,47 +17,46 @@ module.exports = function (app, authUser) {
   */
 
 
-  // index route loads login.html
+  // index route loads login
   app.get("/", function (req, res) {
-    res.render(path.join(__dirname, "../views/login"));
+    res.render("login");
   });
 
-   // entry route loads entry 
-   app.get("/entry/:userid/:entryid", function (req, res) {
-     // do sequelize query & send data into handlebars template
-    res.render("entry", data);
-  });
-  
-  // blog route loads blog.html
-  app.get("/blog", function (req, res) {
-    res.render(path.join(__dirname, "../views/blog"));
-  });
- 
-  // res.render("entry", data)
-// this calls and send entry & it's data to handlebars
-
-  // view route loads view.html
-  app.get("/view", function (req, res) {
-    res.sendFile(path.join(__dirname, "../public/view.html"));
+  // entry route loads entry for new post
+  app.get("/entry/:userid", function (req, res) {
+    res.render("entry");
   });
 
-  
-  
-  // members route loads members.html
+  // entry route loads entry for edit
+  app.get("/entry/:entryid/:userid", function (req, res) {
+    db.Entry.findOne({id: req.params.id}).then(data => {
+      res.render("entry", data);
+    });
+  });
+
+  // blog route loads blog
+  app.get("/blog/:id", function (req, res) {
+    res.render("blog", {})
+  });
+
+  // members route loads members - does this do anything?
   app.get("/members", isAuthenticated, function (req, res) {
-    res.sendFile(path.join(__dirname, "../public/members.html"));
+    res.sendFile("../assets/js/members.js");
   });
-  // signup route loads signup.html
+
+  // signup route loads signup
   app.get("/signup", function (req, res) {
-    res.render(path.join(__dirname, "../views/signup"));
+    res.render("signup");
   });
-  // login route loads login.html
+
+  // login route loads login
   app.get("/login", function (req, res) {
-    res.render(path.join(__dirname, "../views/login"));
+    res.render("login");
   });
-  // resources route loads resources.html
+
+  // resources route loads resources
   app.get("/resources", function (req, res) {
-    res.render(path.join(__dirname, "../views/resources"));
+    res.render("resources");
   });
 
 };
