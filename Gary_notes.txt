@@ -1,0 +1,20 @@
+
+
+
+
+
+Handlebars Way:
+
+  1. The browser requests a page, and in the url is the info specific to that page
+  2. Your route receives that request, and uses thar url information to query the database
+  3. When you get the data back, you need to build a page with that data (using handlebars)
+  4. When handlebars is done, the finished page goes to the browser
+
+
+
+JQuery (Ajax) Way:
+
+1. The browser requests a page 
+2. You send down a handlebars page, but the data query is run with jQuery
+3. When the page hits the browser, jQuery will make  an ajax call to get the data for that page 
+4. That call hits your API route, and your api route sends the data to jQuery, jQuery populates the DOM

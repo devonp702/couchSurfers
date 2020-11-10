@@ -12,7 +12,7 @@ module.exports = function(app) {
       });
   });
 
-  // Get route for returning entries of a specific category
+  // GET route for returning entries of a specific category
   app.get("/api/entries/category/:category", function(req, res) {
     db.Entry.findAll({
       where: {
@@ -26,7 +26,7 @@ module.exports = function(app) {
   });
 
   // GET route for editing a single entry
-  app.get("/api/entries/:id", function(req, res) {
+  app.get("/api/entries/:userid/:id", function(req, res) {
     db.Entry.findOne({
       where: {
         id: req.params.id

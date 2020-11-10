@@ -13,9 +13,22 @@ let PORT = process.env.PORT || 8080;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+<<<<<<< HEAD
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");   //replace
+=======
+const handlebarsConfig = {
+  defaultLayout: "main", 
+  runtimeOptions: {
+    allowProtoPropertiesByDefault: true,
+    allowProtoMethodsByDefault: true
+  } 
+}
+
+app.engine("handlebars", exphbs(handlebarsConfig));
+app.set("view engine", "handlebars");
+>>>>>>> main
 
 
 app.use(express.static("public"));
@@ -31,7 +44,7 @@ require("./routes/htmlRoutes.js")(app);
 require("./routes/userApiRoutes")(app);
 require("./routes/passportApiRoutes")(app);
 
-db.sequelize.sync({ force: true }).then(function() {  //make sure to delete force:true before deployment!!
+db.sequelize.sync().then(function() {  //make sure to delete force:true before deployment!!
     app.listen(PORT, function() {
       console.log("App listening on PORT " + PORT);
     });
