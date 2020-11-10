@@ -55,7 +55,7 @@ module.exports = function (app, authUser) {
   });
 
   // resources route loads resources
-  app.get("/resources", function (req, res) {
+  app.get("/resources/:userid", function (req, res) {
     res.render("resources");
   });
 
