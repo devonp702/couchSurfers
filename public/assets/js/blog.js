@@ -103,7 +103,7 @@ $(document).ready(function () {
     newPostCard.append(newPostCardHeading);
     newPostCard.append(newPostCardBody);
     newPostCard.data("entry", entry);
-    if (this.UserId !== userId) {
+    if (this.data-user !== userId) {
       $(".edit").hide(),
       $(".delete").hide()
     }
