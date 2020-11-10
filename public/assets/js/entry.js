@@ -24,6 +24,7 @@ $(document).ready(function() {
 
   // Adding event listener on "Go to Blog" button
   $(document).on("click", "button.blogBtn", goToBlog);
+  $(document).on("click", "button.nav-link-blog", goToBlog);
 
   // Adding an event listener for when the form is submitted
   $(entryForm).on("submit", function handleFormSubmit(event) {
