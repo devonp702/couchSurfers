@@ -10,7 +10,8 @@ $(document).ready(function() {
 
   // If this exists in our url, pull out the entry id from the url
   // In localhost:8080/?entry_id=1, entryId is 1
-  if (url.indexOf("?entry_id=") !== -1) {
+  // if (url.indexOf("?entry_id=") !== -1) {
+    if (url.indexOf("/:entry") !== -1) {
     entryId = url.split("=")[1];
     getEntryData(entryId);
   }
@@ -67,6 +68,7 @@ $(document).ready(function() {
         titleInput.val(data.title);
         bodyInput.val(data.body);
         entryCategorySelect.val(data.category);
+
         // If we have a entry with this id, set a flag for us to know to update the entry
         // when we hit submit
         updating = true;
@@ -74,7 +76,7 @@ $(document).ready(function() {
     });
   }
   
-
+// GRAB ID OF ENTRY, PUT ID INTO ROUTE ITSELF, 
   // Update a given entry, bring user to the blog page when done
   function updateEntry(entry) {
     $.ajax({

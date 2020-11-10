@@ -129,7 +129,7 @@ $(document).ready(function () {
     const userId = $(this).attr("data-user")
     const entryId = $(this).attr("data-entry")
 
-    var currentEntry = $(this)
+    currentEntry = $(this)
       .parent()
       .parent()
       .data("entry");

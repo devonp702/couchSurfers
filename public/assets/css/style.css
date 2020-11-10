@@ -1,4 +1,35 @@
+/* #CDDDDD light aqua
+#9CC6C4 med aqua
+#409D8B aqua
+#015E54 dark aqua
+#E08340 orange */
+
+/* #navbar-template {} */
+
+/* #navbar */
+
 #navbar {
+  background-color: #015E54;
+  color: #E08340;
+}
+
+#navbar.navbarNav {
+  background-color: #E08340;
+}
+
+
+/*entry body 
+ BLOG ENTRY */
+
+#body {
+background-color: #CDDDDD;
+}
+
+#title {
+background-color: #9CC6C4;
+}
+
+#category {
 
 }
 
