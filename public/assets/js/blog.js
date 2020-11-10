@@ -125,6 +125,7 @@ $(document).ready(function () {
       .parent()
       .data("entry");
     window.location.href = `/entry/${userId}/${entryId}`;
+    
   }
 
   // This function displays a message when there are no posted entries

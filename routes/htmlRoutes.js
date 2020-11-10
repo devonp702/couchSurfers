@@ -15,7 +15,6 @@ module.exports = function (app, authUser) {
 
   */
 
-
   // index route loads login.html
   app.get("/", function (req, res) {
     res.render(path.join(__dirname, "../views/login"));
