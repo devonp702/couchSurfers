@@ -24,6 +24,7 @@ $(document).ready(function () {
     $.get("/api/entries" + categoryString, function (data) {
       console.log("Entries", data);
       entries = data;
+      
       if (!entries || !entries.length) {
         displayEmpty();
       }
