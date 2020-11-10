@@ -83,8 +83,8 @@ $(document).ready(function() {
       url: "/api/entries",
       data: entry
     })
-      .then(function(authUser) {
-        window.location.href = `/blog/${authUser.id}`;
+      .then(function() {
+        window.location.href = `/blog/${userId}`;
       });
   }
 
