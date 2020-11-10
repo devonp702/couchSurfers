@@ -38,7 +38,7 @@ require("./routes/htmlRoutes.js")(app);
 require("./routes/userApiRoutes")(app);
 require("./routes/passportApiRoutes")(app);
 
-db.sequelize.sync({ force: true }).then(function() {  //make sure to delete force:true before deployment!!
+db.sequelize.sync().then(function() {  //make sure to delete force:true before deployment!!
     app.listen(PORT, function() {
       console.log("App listening on PORT " + PORT);
     });
