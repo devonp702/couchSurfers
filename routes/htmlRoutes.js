@@ -33,8 +33,9 @@ module.exports = function (app, authUser) {
   });
 
   // blog route loads blog
-  app.get("/blog", function (req, res) {
-    res.render(path.join(__dirname, "../views/blog"));
+  app.get("/blog/:id", function (req, res) {
+    res.render("blog", {})
+    //res.render(path.join(__dirname, "../views/blog"));
   });
 
   // members route loads members.html

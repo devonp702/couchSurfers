@@ -1,7 +1,8 @@
 $(document).ready(function() {
   // Gets an optional query string from our url (i.e. ?entry=23)
 
-  let userId = window.location.search.substring(1).split("/")[2];
+  const urlArray = window.location.href.split("/");
+  const userId = urlArray[urlArray.length - 1];
   let url = window.location.search;
   let entryId;
   // Updating - t/f?

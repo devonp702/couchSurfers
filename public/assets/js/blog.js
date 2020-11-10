@@ -1,7 +1,12 @@
 $(document).ready(function () {
   //get the user id from the url string
-  let userId = parseInt(window.location.search.substring(1).split("/")[2]);
+  
+  const urlArray = window.location.href.split("/")
+  const userId = urlArray[urlArray.length - 1]
   console.log(userId)
+
+  // blog?userid=1
+  // /blog/1
 
   // blogContainer holds all of our blog entries
   const blogContainer = $(".blog-container");

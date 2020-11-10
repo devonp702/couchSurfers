@@ -13,8 +13,15 @@ let PORT = process.env.PORT || 8080;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+const handlebarsConfig = {
+  defaultLayout: "main", 
+  runtimeOptions: {
+    allowProtoPropertiesByDefault: true,
+    allowProtoMethodsByDefault: true
+  } 
+}
 
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.engine("handlebars", exphbs(handlebarsConfig));
 app.set("view engine", "handlebars");
 
 
