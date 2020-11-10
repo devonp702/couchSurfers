@@ -21,7 +21,7 @@ module.exports = function (app, authUser) {
     res.render(path.join(__dirname, "../views/login"));
   });
 
-   // entry route loads entry.html
+   // entry route loads entry 
    app.get("/entry/:userid/:entryid", function (req, res) {
      // do sequelize query & send data into handlebars template
     res.render("entry", data);
@@ -32,10 +32,15 @@ module.exports = function (app, authUser) {
     res.render(path.join(__dirname, "../views/blog"));
   });
  
+  // res.render("entry", data)
+// this calls and send entry & it's data to handlebars
+
   // view route loads view.html
   app.get("/view", function (req, res) {
     res.sendFile(path.join(__dirname, "../public/view.html"));
   });
+
+  
   
   // members route loads members.html
   app.get("/members", isAuthenticated, function (req, res) {
