@@ -1,7 +1,7 @@
 $(document).ready(function() {
   // Gets an optional query string from our url (i.e. ?entry=23)
 
-  let userId = window.location.search.substring(1).split("=")[1];
+  let userId = window.location.search.substring(1).split("/")[2];
   let url = window.location.search;
   let entryId;
   // Updating - t/f?
@@ -54,7 +54,7 @@ $(document).ready(function() {
   // Submits a new entry and brings user to blog page upon completion
   function submitEntry(Entry) {
     $.post("/api/entries/", Entry, function() {
-      window.location.href = "/blog?userid=" + userId;
+      window.location.href = `/blog/${userId}`;
     });
   }
 
@@ -82,11 +82,11 @@ $(document).ready(function() {
       data: entry
     })
       .then(function(authUser) {
-        window.location.href = "/blog?userid=" + authUser.id;
+        window.location.href = `/blog/${authUser.id}`;
       });
   }
 
   function goToBlog() {
-    window.location.href = "/blog?userid=" + userId;
+    window.location.href = `/blog/${userId}`;
   }
 });

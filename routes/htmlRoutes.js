@@ -5,7 +5,7 @@ var isAuthenticated = require("../config/middleware/isAuthenticated");
 // Routes
 module.exports = function (app, authUser) {
 
-  // Each of the below routes just handles the HTML page that the user gets sent to.
+  // These routes just handles the page that the user gets sent to.
 
 
   /*
@@ -16,40 +16,43 @@ module.exports = function (app, authUser) {
   */
 
 
-  // index route loads login.html
+  // index route loads login
   app.get("/", function (req, res) {
     res.render(path.join(__dirname, "../views/login"));
   });
 
-   // entry route loads entry.html
-   app.get("/entry/:userid/:entryid", function (req, res) {
-     // do sequelize query & send data into handlebars template
+  // entry route loads entry for new post
+  app.get("/entry/:userid", function (req, res) {
+    res.render("entry");
+  });
+
+  // entry route loads entry for edit
+  app.get("/entry/:userid/:entryid", function (req, res) {
+    // do sequelize query & send data into handlebars template
     res.render("entry", data);
   });
-  
-  // blog route loads blog.html
+
+  // blog route loads blog
   app.get("/blog", function (req, res) {
     res.render(path.join(__dirname, "../views/blog"));
   });
- 
-  // view route loads view.html
-  app.get("/view", function (req, res) {
-    res.sendFile(path.join(__dirname, "../public/view.html"));
-  });
-  
+
   // members route loads members.html
-  app.get("/members", isAuthenticated, function (req, res) {
-    res.sendFile(path.join(__dirname, "../public/members.html"));
-  });
-  // signup route loads signup.html
+  // app.get("/members", isAuthenticated, function (req, res) {
+  //   res.sendFile(path.join(__dirname, "../public/members.html"));
+  // });
+
+  // signup route loads signup
   app.get("/signup", function (req, res) {
     res.render(path.join(__dirname, "../views/signup"));
   });
-  // login route loads login.html
+
+  // login route loads login
   app.get("/login", function (req, res) {
     res.render(path.join(__dirname, "../views/login"));
   });
-  // resources route loads resources.html
+  
+  // resources route loads resources
   app.get("/resources", function (req, res) {
     res.render(path.join(__dirname, "../views/resources"));
   });

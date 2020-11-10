@@ -7,7 +7,7 @@ var db = require("../models");
 
 module.exports = function (app) {
   // Find single user by id and include all of their entries
-  app.get("/api/:users/entries", function (req, res) {
+  app.get("/api/:users", function (req, res) {
     db.User.findOne({
       where: {
         id: req.params.id
