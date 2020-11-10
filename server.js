@@ -15,7 +15,7 @@ app.use(express.json());
 
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
-app.set("view engine", "handlebars");
+app.set("view engine", "handlebars");   //replace
 
 
 app.use(express.static("public"));
