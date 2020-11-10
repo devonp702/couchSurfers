@@ -1,7 +1,12 @@
 $(document).ready(function () {
   //get the user id from the url string
-  let userId = parseInt(window.location.search.substring(1).split("/")[2]);
+  
+  const urlArray = window.location.href.split("/")
+  const userId = urlArray[urlArray.length - 1]
   console.log(userId)
+
+  // blog?userid=1
+  // /blog/1
 
   // blogContainer holds all of our blog entries
   const blogContainer = $(".blog-container");
@@ -98,6 +103,10 @@ $(document).ready(function () {
     newPostCard.append(newPostCardHeading);
     newPostCard.append(newPostCardBody);
     newPostCard.data("entry", entry);
+    if (this.data-user !== userId) {
+      $(".edit").hide(),
+      $(".delete").hide()
+    }
     return newPostCard;
   }
 
@@ -124,7 +133,7 @@ $(document).ready(function () {
       .parent()
       .parent()
       .data("entry");
-    window.location.href = `/entry/${userId}/${entryId}`;
+    window.location.href = `/entry/${entryId}/${userId}`;
   }
 
   // This function displays a message when there are no posted entries
