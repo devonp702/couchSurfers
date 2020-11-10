@@ -12,12 +12,7 @@ $(document).ready(function() {
   // If this exists in our url, pull out the entry id from the url
   // In localhost:8080/?entry_id=1, entryId is 1
   // if (url.indexOf("?entry_id=") !== -1) {
-<<<<<<< HEAD
-    if (url.indexOf("/:entry") !== -1) {
-    entryId = url.split("=")[1];
-=======
     // entryId = urlArray[urlArray.length - 2];
->>>>>>> main
     getEntryData(entryId);
   // }
 
