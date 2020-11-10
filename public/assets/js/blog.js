@@ -66,16 +66,20 @@ $(document).ready(function () {
     newPostCard.addClass("card");
     var newPostCardHeading = $("<div>");
     newPostCardHeading.addClass("card-header");
-    var deleteBtn = $("<button>");
-    deleteBtn.text("x");
-    deleteBtn.attr("data-user", userId);
-    deleteBtn.attr("data-entry", entry.id);
-    deleteBtn.addClass("delete btn btn-danger");
-    var editBtn = $("<button>");
-    editBtn.text("EDIT");
-    editBtn.attr("data-user", userId);
-    editBtn.attr("data-entry", entry.id);
-    editBtn.addClass("edit btn btn-default");
+    if (entry.UserId == userId) {
+      var deleteBtn = $("<button>");
+      deleteBtn.text("x");
+      deleteBtn.attr("data-user", userId);
+      deleteBtn.attr("data-entry", entry.id);
+      deleteBtn.addClass("delete btn btn-danger");
+      var editBtn = $("<button>");
+      editBtn.text("EDIT");
+      editBtn.attr("data-user", userId);
+      editBtn.attr("data-entry", entry.id);
+      editBtn.addClass("edit btn btn-default");
+      newPostCardHeading.append(deleteBtn);
+      newPostCardHeading.append(editBtn);
+    }
     var newPostTitle = $("<h2>");
     var newPostDate = $("<small>");
     var newPostCategory = $("<h5>");
@@ -95,18 +99,23 @@ $(document).ready(function () {
     formattedDate = moment(formattedDate).format("MMMM Do, YYYY");
     newPostDate.text(formattedDate);
     newPostTitle.append(newPostDate);
-    newPostCardHeading.append(deleteBtn);
-    newPostCardHeading.append(editBtn);
+    
     newPostCardHeading.append(newPostTitle);
     newPostCardHeading.append(newPostCategory);
     newPostCardBody.append(newPostBody);
     newPostCard.append(newPostCardHeading);
     newPostCard.append(newPostCardBody);
     newPostCard.data("entry", entry);
-    if (this.data-user !== userId) {
-      $(".edit").hide(),
-      $(".delete").hide()
+
+    /*
+    console.log( entry.UserId + "|" + userId)
+    if (entry.UserId != userId) {
+      console.log("hide: " + entry.title)
+      $("button.edit").hide(),
+      $("button.delete").hide()
     }
+    */
+
     return newPostCard;
   }
 
@@ -129,7 +138,7 @@ $(document).ready(function () {
     const userId = $(this).attr("data-user")
     const entryId = $(this).attr("data-entry")
 
-    var currentEntry = $(this)
+    currentEntry = $(this)
       .parent()
       .parent()
       .data("entry");
