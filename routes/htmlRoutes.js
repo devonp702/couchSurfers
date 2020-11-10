@@ -35,7 +35,7 @@ module.exports = function (app, authUser) {
   });
 
   // blog route loads blog
-  app.get("/blog/:id", function (req, res) {
+  app.get("/blog/:userid", function (req, res) {
     res.render("blog", {})
   });
 

@@ -26,7 +26,7 @@ module.exports = function(app) {
   });
 
   // GET route for editing a single entry
-  app.get("/api/entries/:userid/:id", function(req, res) {
+  app.get("/api/entries/:id/:userid", function(req, res) {
     db.Entry.findOne({
       where: {
         id: req.params.id
