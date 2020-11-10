@@ -24,10 +24,10 @@ $(document).ready(function() {
 
   // Adding event listener on "Go to Blog" button
   $(document).on("click", "button.blogBtn", goToBlog);
-  $(document).on("click", "button.nav-link-blog", goToBlog);
-  $(document).on("click", "button.nav-link-resources", goToResources);
-  $(document).on("click", "button.nav-link-logout", goToLogout );
-  $(document).on("click", "button.nav-link-login", goToLogin );
+  // $(document).on("click", "button.nav-link-blog", goToBlog);
+  // $(document).on("click", "button.nav-link-resources", goToResources);
+  // $(document).on("click", "button.nav-link-logout", goToLogout );
+  // $(document).on("click", "button.nav-link-login", goToLogin );
 
   // Adding an event listener for when the form is submitted
   $(entryForm).on("submit", function handleFormSubmit(event) {
@@ -95,13 +95,13 @@ $(document).ready(function() {
   function goToBlog() {
     window.location.href = `/blog/${userId}`;
   }
-  function goToResources() {
-    window.location.href = `/resources/${userId}`;
-  }
-  function goToLogout() {
-    window.location.href = `/logout`;
-  }
-  function goToLogin() {
-      window.location.href = `/login`;
-  }
+  // function goToResources() {
+  //   window.location.href = `/resources/${userId}`;
+  // }
+  // function goToLogout() {
+  //   window.location.href = `/logout`;
+  // }
+  // function goToLogin() {
+  //     window.location.href = `/login`;
+  // }
 });
