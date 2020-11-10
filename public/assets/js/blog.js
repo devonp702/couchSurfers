@@ -1,6 +1,6 @@
 $(document).ready(function () {
   //get the user id from the url string
-  let userId = parseInt(window.location.search.substring(1).split("=")[1]);
+  let userId = parseInt(window.location.search.substring(1).split("/")[2]);
   console.log(userId)
 
   // blogContainer holds all of our blog entries
@@ -132,7 +132,7 @@ $(document).ready(function () {
     blogContainer.empty();
     const messageH2 = $("<h2>");
     messageH2.css({ "text-align": "center", "margin-top": "50px" });
-    messageH2.html(`No blog entries, click <a href='/entry?userid=${userId}'>here</a> to write the first one.`);
+    messageH2.html(`No blog entries, click <a href='/entry/${userId}'>here</a> to write the first one.`);
     blogContainer.append(messageH2);
   }
 
@@ -144,6 +144,6 @@ $(document).ready(function () {
 
   // This function sends user to the New Entry page
   function goToEntry() {
-    window.location.href = "/entry?userid=" + userId;
+    window.location.href = `/entry/${userId}`;
   }
 });
