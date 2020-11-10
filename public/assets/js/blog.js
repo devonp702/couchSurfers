@@ -1,6 +1,8 @@
 $(document).ready(function () {
   //get the user id from the url string
-  let userId = parseInt(window.location.search.substring(1).split("/")[2]);
+  
+  const urlArray = window.location.href.split("/")
+  const userId = urlArray[urlArray.length - 1]
   console.log(userId)
 
   // blogContainer holds all of our blog entries
@@ -61,19 +63,24 @@ $(document).ready(function () {
     newPostCard.addClass("card");
     var newPostCardHeading = $("<div>");
     newPostCardHeading.addClass("card-header");
-    var deleteBtn = $("<button>");
-    deleteBtn.text("x");
-    deleteBtn.attr("data-user", userId);
-    deleteBtn.attr("data-entry", entry.id);
-    deleteBtn.addClass("delete btn btn-danger");
-    var editBtn = $("<button>");
-    editBtn.text("EDIT");
-    editBtn.attr("data-user", userId);
-    editBtn.attr("data-entry", entry.id);
-    editBtn.addClass("edit btn btn-default");
+    if (entry.UserId == userId) {
+      var deleteBtn = $("<button>");
+      deleteBtn.text("x");
+      deleteBtn.attr("data-user", userId);
+      deleteBtn.attr("data-entry", entry.id);
+      deleteBtn.addClass("delete btn btn-danger");
+      var editBtn = $("<button>");
+      editBtn.text("EDIT");
+      editBtn.attr("data-user", userId);
+      editBtn.attr("data-entry", entry.id);
+      editBtn.addClass("edit btn btn-default");
+      newPostCardHeading.append(deleteBtn);
+      newPostCardHeading.append(editBtn);
+    }
     var newPostTitle = $("<h2>");
     var newPostDate = $("<small>");
     var newPostCategory = $("<h5>");
+    var newPostAuthor = $("<h5>");
     newPostCategory.text(entry.category);
     newPostCategory.css({
       float: "right",
@@ -90,8 +97,6 @@ $(document).ready(function () {
     formattedDate = moment(formattedDate).format("MMMM Do, YYYY");
     newPostDate.text(formattedDate);
     newPostTitle.append(newPostDate);
-    newPostCardHeading.append(deleteBtn);
-    newPostCardHeading.append(editBtn);
     newPostCardHeading.append(newPostTitle);
     newPostCardHeading.append(newPostCategory);
     newPostCardBody.append(newPostBody);
@@ -120,11 +125,11 @@ $(document).ready(function () {
     const userId = $(this).attr("data-user")
     const entryId = $(this).attr("data-entry")
 
-    var currentEntry = $(this)
+    currentEntry = $(this)
       .parent()
       .parent()
       .data("entry");
-    window.location.href = `/entry/${userId}/${entryId}`;
+    window.location.href = `/entry/${entryId}/${userId}`;
   }
 
   // This function displays a message when there are no posted entries

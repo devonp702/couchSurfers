@@ -1,18 +1,20 @@
 $(document).ready(function() {
   // Gets an optional query string from our url (i.e. ?entry=23)
 
-  let userId = window.location.search.substring(1).split("/")[2];
+  const urlArray = window.location.href.split("/");
+  const userId = urlArray[urlArray.length - 1];
+  const entryId = urlArray[urlArray.length - 2];
   let url = window.location.search;
-  let entryId;
+  // let entryId;
   // Updating - t/f?
   var updating = false;
 
   // If this exists in our url, pull out the entry id from the url
   // In localhost:8080/?entry_id=1, entryId is 1
-  if (url.indexOf("?entry_id=") !== -1) {
-    entryId = url.split("=")[1];
+  // if (url.indexOf("?entry_id=") !== -1) {
+    // entryId = urlArray[urlArray.length - 2];
     getEntryData(entryId);
-  }
+  // }
 
   // Getting jQuery references to the entry body, title, form, and category select
   var bodyInput = $("#body");
@@ -60,7 +62,7 @@ $(document).ready(function() {
 
   // Gets entry data for a entry if we're editing
   function getEntryData(id) {
-    $.get("/api/entries/" + id, function(data) {
+    $.get(`/api/entries/${entryId}/${userId}`, function(data) {
       if (data) {
         // If this entry exists, prefill our cms forms with its data
         titleInput.val(data.title);
@@ -81,8 +83,8 @@ $(document).ready(function() {
       url: "/api/entries",
       data: entry
     })
-      .then(function(authUser) {
-        window.location.href = `/blog/${authUser.id}`;
+      .then(function() {
+        window.location.href = `/blog/${userId}`;
       });
   }
 

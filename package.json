@@ -5,7 +5,9 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "deploy": "npx sequelize db:drop && npx sequelize db:create && node sync.js && npm run seed && node server.js",
+    "seed": "npx sequelize db:seed:all"
   },
   "repository": {
     "type": "git",
@@ -25,7 +27,8 @@
     "particles.js": "^2.0.0",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
-    "sequelize": "^6.3.5"
+    "sequelize": "^6.3.5",
+    "sequelize-cli": "^6.2.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.6"
