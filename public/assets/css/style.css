@@ -1,3 +1,32 @@
+/* #CDDDDD LIGHT
+#9CC6C4 MED
+#409D8B AQUA
+#015E54 DARK
+#E08340 ORANGE */
+
+/* .navbar-template {
+  background-color: #015E54; 
+height: 7%;
+ linear-gradient(rgba(230, 183, 95, 0.5), rgba(14, 131, 151, 0.5)) 
+}
+
+.navbar-elements {
+  text-align: center; 
+  font-size: 35px;
+  color: white;
+} 
+*/
+
+
+body, html{
+  background-image: linear-gradient(#E08340, #9CC6C4);
+   height: 100%;  
+}
+ 
+a {
+  color:#015E54;
+}
+
 /* login/signup form */
 #center-form {  
   margin-top: 150px;
@@ -46,20 +75,13 @@ button.edit {
   margin: 5px;
 }
 
-
-
-
-body, html {
-  height: 100%;
-}
-
 /* The hero image */
 .hero-image {
 /* Use "linear-gradient" to add a darken background effect to the image (wave.jpg). This will make the text easier to read */
-background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/assets/img/wave.jpg");
+background-image: linear-gradient(rgba(230, 183, 95, 0.5), rgba(14, 131, 151, 0.5)), url("/assets/img/wave.jpg");
 
 /* Set a specific height */
-height: 50%;
+height: 25%;
 
 /* Position and center the image to scale nicely on all screens */
 background-position: center;
@@ -76,6 +98,7 @@ top: 50%;
 left: 50%;
 transform: translate(-50%, -50%);
 color: white;
+font-family: 'Fjalla One', sans-serif;
 }
 
 /* ---- particles.js container ---- */ 
