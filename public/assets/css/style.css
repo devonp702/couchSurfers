@@ -4,17 +4,18 @@
 #015E54 DARK
 #E08340 ORANGE */
 
-.navbar-template {
+/* .navbar-template {
   background-color: #015E54; 
 height: 7%;
-  /* linear-gradient(rgba(230, 183, 95, 0.5), rgba(14, 131, 151, 0.5)) */
+ linear-gradient(rgba(230, 183, 95, 0.5), rgba(14, 131, 151, 0.5)) 
 }
 
 .navbar-elements {
   text-align: center; 
   font-size: 35px;
   color: white;
-}
+} 
+*/
 
 
 body, html{
@@ -97,6 +98,7 @@ top: 50%;
 left: 50%;
 transform: translate(-50%, -50%);
 color: white;
+font-family: 'Fjalla One', sans-serif;
 }
 
 /* ---- particles.js container ---- */ 
