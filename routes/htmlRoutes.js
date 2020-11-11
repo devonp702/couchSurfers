@@ -4,18 +4,7 @@ var db = require("../models");
 var isAuthenticated = require("../config/middleware/isAuthenticated");
 
 // Routes
-module.exports = function (app, authUser) {
-
-  // These routes just handles the page that the user gets sent to.
-
-
-  /*
-  1. Make a call to an html route handler, get the entry and user id, query sequelize, send data to handlebars
-
-  2. On a static entry page, when that page loads, get the entry and user id, make an AJAX call to get the data, receive the data (JSON) and then update the DOM 
-
-  */
-
+module.exports = function (app) {
 
   // index route loads login
   app.get("/", function (req, res) {

@@ -1,4 +1,3 @@
-// get, post, deletes
 
 // db.Users refers to User table
 // db.Entries refers to Entry table
