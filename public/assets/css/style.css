@@ -1,4 +1,23 @@
-/* gradient background */
+/* #CDDDDD LIGHT
+#9CC6C4 MED
+#409D8B AQUA
+#015E54 DARK
+#E08340 ORANGE */
+
+/* .navbar-template {
+  background-color: #015E54; 
+height: 7%;
+ linear-gradient(rgba(230, 183, 95, 0.5), rgba(14, 131, 151, 0.5)) 
+}
+
+.navbar-elements {
+  text-align: center; 
+  font-size: 35px;
+  color: white;
+} 
+*/
+
+
 body {
   background-image: linear-gradient(#E08340, #9CC6C4);
   height: 100%;
@@ -9,7 +28,6 @@ html {
   min-height: 100%;
 }
  
-/* href link */
 a {
   color:#015E54;
 }
@@ -28,7 +46,6 @@ a {
 #here-button {
   color: #015e54;
 }
-
 /* blog container */
 button.submit {
   float: right;
@@ -59,14 +76,16 @@ form#entry {
 
 small, .small {
   font-size: 50%;
-  font-family: 'Fjalla One', sans-serif;  
+  font-family: 'Fjalla One', sans-serif;
+  
 }
 
 /* navbar handlebars*/
+
 .nav-btn {
   margin: 5px;
   padding: 10px;
-  width: 150px;
+  width: 10%;
 }
 
 h2 {
@@ -84,6 +103,7 @@ h5 {
 .categories {
   font-family: 'Fjalla One', sans-serif;
 }
+
 
 .card-header button.delete,
 button.edit {
