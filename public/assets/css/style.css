@@ -30,6 +30,10 @@ height: 7%;
 #form-text {
   color: white;
 }
+
+#here-button {
+  color: #015e54;
+}
 /* blog container */
 button.submit {
   float: right;
@@ -42,12 +46,30 @@ form#entry {
 #entry textarea {
   resize: none;
 }
+  /* fonts*/
+
+#blog-btn, #submit-btn, #new-entry {
+  font-family: 'Fjalla One', sans-serif;
+}
+
+small, .small {
+  font-size: 50%;
+  font-family: 'Fjalla One', sans-serif;
   
+}
+
+h2 {
+  font-family: 'Open Sans', sans-serif;
+}
+
 .card-header button.delete,
 button.edit {
   float: right;
   margin: 5px;
 }
+
+
+
 
 body, html {
   height: 100%;

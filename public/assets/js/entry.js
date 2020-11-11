@@ -5,16 +5,11 @@ $(document).ready(function() {
   const userId = urlArray[urlArray.length - 1];
   const entryId = urlArray[urlArray.length - 2];
   let url = window.location.search;
-  // let entryId;
   // Updating - t/f?
   var updating = false;
 
   // If this exists in our url, pull out the entry id from the url
-  // In localhost:8080/?entry_id=1, entryId is 1
-  // if (url.indexOf("?entry_id=") !== -1) {
-    // entryId = urlArray[urlArray.length - 2];
     getEntryData(entryId);
-  // }
 
   // Getting jQuery references to the entry body, title, form, and category select
   var bodyInput = $("#body");
@@ -24,10 +19,6 @@ $(document).ready(function() {
 
   // Adding event listener on "Go to Blog" button
   $(document).on("click", "button.blogBtn", goToBlog);
-  // $(document).on("click", "button.nav-link-blog", goToBlog);
-  // $(document).on("click", "button.nav-link-resources", goToResources);
-  // $(document).on("click", "button.nav-link-logout", goToLogout );
-  // $(document).on("click", "button.nav-link-login", goToLogin );
 
   // Adding an event listener for when the form is submitted
   $(entryForm).on("submit", function handleFormSubmit(event) {
@@ -95,13 +86,4 @@ $(document).ready(function() {
   function goToBlog() {
     window.location.href = `/blog/${userId}`;
   }
-  // function goToResources() {
-  //   window.location.href = `/resources/${userId}`;
-  // }
-  // function goToLogout() {
-  //   window.location.href = `/logout`;
-  // }
-  // function goToLogin() {
-  //     window.location.href = `/login`;
-  // }
 });
