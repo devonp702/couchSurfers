@@ -11,7 +11,7 @@
 * [Tests](#tests)
 * [Credits](#credits)
 * [Contributing](#contributing)
-* [Questions](#questions)
+* [gitHub](#github)
 * [License](#license)
 
 ## Description
@@ -69,7 +69,7 @@ N/A
 
 Jessica Anocibar, Laura Cole, Madeline Cowell, Devon Phillips, Joshua Thompson, Alec Rewinkel
 
-## Questions
+## gitHub
 
 Our gitHub profiles:
 [Jessica Anocibar](https://github.com/jessicaano92), [Laura Cole](https://github.com/LauraCole1900), [Madeline Cowell](https://github.com/MadelineCowell), [Devon Phillips](https://github.com/devonp702), [Joshua Thompson](https://github.com/Laika-Beats), [Alec Rewinkel](https://github.com/arewinkl)
