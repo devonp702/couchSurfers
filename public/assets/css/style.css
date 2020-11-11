@@ -1,40 +1,5 @@
-/* #CDDDDD light aqua
-#9CC6C4 med aqua
-#409D8B aqua
-#015E54 dark aqua
-#E08340 orange */
-
-/* #navbar-template {} */
-
-/* #navbar */
-
-#navbar {
-  background-color: #015E54;
-  color: #E08340;
-}
-
-#navbar.navbarNav {
-  background-color: #E08340;
-}
-
-
-/*entry body 
- BLOG ENTRY */
-
-#body {
-background-color: #CDDDDD;
-}
-
-#title {
-background-color: #409D8B;
-}
-
-#category {
-
-}
-
 /* #CDDDDD LIGHT
-#9CC6C4M MED
+#9CC6C4 MED
 #409D8B AQUA
 #015E54 DARK
 #E08340 ORANGE */
@@ -50,10 +15,17 @@ height: 7%;
   font-size: 35px;
   color: white;
 }
-/* .d-inline-block {
-  /
-} */
 
+
+body, html{
+  background-image: linear-gradient(#E08340, #9CC6C4);
+   height: 100%;
+  
+}
+ 
+a {
+  color:#015E54;
+}
 
 /* login/signup form */
 #center-form {  
@@ -64,6 +36,10 @@ height: 7%;
 
 #form-text {
   color: white;
+}
+
+#here-button {
+  color: #015e54;
 }
 /* blog container */
 button.submit {
@@ -77,18 +53,26 @@ form#entry {
 #entry textarea {
   resize: none;
 }
+  /* fonts*/
+
+#blog-btn, #submit-btn, #new-entry {
+  font-family: 'Fjalla One', sans-serif;
+}
+
+small, .small {
+  font-size: 50%;
+  font-family: 'Fjalla One', sans-serif;
   
+}
+
+h2 {
+  font-family: 'Open Sans', sans-serif;
+}
+
 .card-header button.delete,
 button.edit {
   float: right;
   margin: 5px;
-}
-/* ---- reset ---- */  /* ---- particles.js container ---- */ #particles-js{ position:absolute; width: 100%; height: 100%; background-color: #131637; background-image: url(""); background-repeat: no-repeat; background-size: cover; background-position: 50% 50%; } /* ---- stats.js ---- */ 
-
-
-
-body, html {
-  height: 100%;
 }
 
 /* The hero image */
@@ -113,7 +97,7 @@ position: absolute;
 top: 50%;
 left: 50%;
 transform: translate(-50%, -50%);
-color:white;
+color: white;
 }
 
 /* ---- particles.js container ---- */ 
