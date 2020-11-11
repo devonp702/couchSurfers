@@ -60,7 +60,7 @@ form#entry {
 }
   /* fonts*/
 
-#blog-btn, #new-entry, #navbar-text {
+#blog-btn, #new-entry, #navbar-text, .resources {
   font-family: 'Fjalla One', sans-serif;
 }
 
@@ -87,6 +87,14 @@ h2 {
   font-family: 'Open Sans', sans-serif;
 }
 
+h5 {
+  font-family: 'Open Sans', sans-serif;
+  padding: 10px;
+}
+
+.card {
+  margin: 15px;
+}
 .categories {
   font-family: 'Fjalla One', sans-serif;
 }
