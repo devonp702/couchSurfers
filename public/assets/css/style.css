@@ -75,6 +75,16 @@ button.edit {
   margin: 5px;
 }
 
+<<<<<<< HEAD
+=======
+
+
+
+body, html {
+  height: 100%;
+}
+
+>>>>>>> main
 /* The hero image */
 .hero-image {
 /* Use "linear-gradient" to add a darken background effect to the image (wave.jpg). This will make the text easier to read */
