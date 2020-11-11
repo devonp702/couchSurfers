@@ -42,10 +42,6 @@ passport.serializeUser(function(user, cb) {
   cb(null, user);
 });
 
-// passport.deserializeUser(function(obj, cb) {
-//   cb(null, obj);
-// });
-
 passport.deserializeUser(function(user, cb) {
   User.findById(id, function(err, user) {
     cb(err, user);
