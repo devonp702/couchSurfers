@@ -42,6 +42,9 @@ Entry page:
 Resources page:
 ![Resources page](public/assets/img/resources-page.png)
 
+Resources page with expanded navbar:
+![Resources page with expanded navbar](public/assets/img/resources-page-with-navbar.png)
+
 ## Installation Instructions
 
 npm i
