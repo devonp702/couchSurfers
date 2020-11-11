@@ -5,7 +5,7 @@ $(document).ready(function() {
   const userId = urlArray[urlArray.length - 1];
   const entryId = urlArray[urlArray.length - 2];
   let url = window.location.search;
-  // Updating - t/f?
+  
   var updating = false;
 
   // If this exists in our url, pull out the entry id from the url
@@ -59,10 +59,11 @@ $(document).ready(function() {
   function getEntryData(id) {
     $.get(`/api/entries/${entryId}/${userId}`, function(data) {
       if (data) {
-        // If this entry exists, prefill our cms forms with its data
+        
         titleInput.val(data.title);
         bodyInput.val(data.body);
         entryCategorySelect.val(data.category);
+
         // If we have a entry with this id, set a flag for us to know to update the entry
         // when we hit submit
         updating = true;
@@ -70,7 +71,7 @@ $(document).ready(function() {
     });
   }
   
-
+// GRAB ID OF ENTRY, PUT ID INTO ROUTE ITSELF, 
   // Update a given entry, bring user to the blog page when done
   function updateEntry(entry) {
     $.ajax({
